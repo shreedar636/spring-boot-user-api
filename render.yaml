@@ -1,13 +1,9 @@
-databases:
-  - name: mydb
-    databaseName: mydb
-    user: myuser
-    plan: free
-
 services:
   - type: web
     name: springboot-user-api
-    runtime: docker
+    runtime: node  # (We'll override commands)
+    buildCommand: chmod +x render-build.sh && ./render-build.sh
+    startCommand: java -jar build/libs/app.jar
     plan: free
     envVars:
       - key: DB_HOST
