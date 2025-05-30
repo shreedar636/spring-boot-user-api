@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
 
-# Install OpenJDK 17 (required for Spring Boot)
-sudo apt update
-sudo apt install -y openjdk-17-jdk
+# Install OpenJDK 17 without sudo
+apt-get update && apt-get install -y openjdk-17-jdk
 
 # Verify Java installation
 java -version
