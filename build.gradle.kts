@@ -2,6 +2,7 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.5.0"
 	id("io.spring.dependency-management") version "1.1.7"
+
 }
 
 group = "com.example"
@@ -28,4 +29,19 @@ dependencies {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+tasks.withType<Jar> {
+	archiveFileName.set("app.jar")
+}
+
+tasks.bootJar {
+	archiveFileName.set("app.jar")
+	launchScript()
+}
+tasks.withType<JavaCompile> {
+	options.compilerArgs.addAll(listOf("-parameters"))
+}
+
+springBoot {
+	buildInfo()
 }

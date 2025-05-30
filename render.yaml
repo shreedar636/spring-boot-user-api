@@ -1,9 +1,10 @@
 services:
   - type: web
-    name: your-spring-app
+    name: spring-boot-render
     runtime: java
-    buildCommand: ./mvnw clean package
-    startCommand: java -jar target/*.jar --spring.profiles.active=prod
+    buildCommand: ./gradlew clean bootJar
+    startCommand: java -jar build/libs/*.jar --spring.profiles.active=prod
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+    plan: free # or 'starter' for paid plan
