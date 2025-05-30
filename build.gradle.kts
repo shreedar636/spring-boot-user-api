@@ -35,8 +35,8 @@ tasks.withType<Jar> {
 }
 
 tasks.bootJar {
-	archiveFileName.set("app.jar")
-	launchScript()
+	archiveFileName = "app.jar"  // Ensures output is named app.jar
+	launchScript()  // Makes the JAR executable
 }
 tasks.withType<JavaCompile> {
 	options.compilerArgs.addAll(listOf("-parameters"))
