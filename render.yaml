@@ -2,8 +2,11 @@ services:
   - type: web
     name: spring-boot-render
     runtime: java
-    buildCommand: chmod +x gradlew && ./gradlew clean bootJar
+    buildCommand: |
+      chmod +x gradlew
+      ./gradlew clean bootJar
     startCommand: java -jar build/libs/app.jar --spring.profiles.active=prod
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+    plan: free
