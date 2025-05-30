@@ -9,4 +9,14 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
+      - key: DB_HOST
+        value: your-postgres-host-from-render
+      - key: DB_NAME
+        value: your-database-name
+      - key: DB_USERNAME
+        value: your-database-username
+      - key: DB_PASSWORD
+        value: your-database-password
+      - key: PORT
+        value: 8080
     plan: free
