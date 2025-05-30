@@ -4,8 +4,8 @@ services:
     runtime: java
     buildCommand: |
       chmod +x gradlew
-      ./gradlew clean bootJar
-    startCommand: java -jar build/libs/app.jar --spring.profiles.active=prod
+      ./gradlew clean bootJar --no-daemon
+    startCommand: java -Dspring.profiles.active=prod -jar build/libs/*.jar
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
