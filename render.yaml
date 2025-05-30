@@ -1,8 +1,6 @@
 databases:
   - name: springboot-db
     databaseName: mydb
-    user: admin
-    password: password
 
 services:
   - type: web
