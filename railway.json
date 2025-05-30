@@ -1,7 +1,0 @@
-{
-  "build": {
-    "builder": "GRADLE",
-    "buildCommand": "./gradlew build",
-    "runCommand": "java -jar build/libs/*.jar"
-  }
-}
