@@ -1,0 +1,14 @@
+databases:
+  - name: mydb
+    databaseName: mydb
+    user: myuser
+    plan: free
+
+services:
+  - type: web
+    name: springboot-api
+    runtime: java
+    buildCommand: ./gradlew build
+    startCommand: java -jar build/libs/app.jar
+    env: java
+    plan: free
