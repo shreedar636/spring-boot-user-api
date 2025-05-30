@@ -1,7 +1,12 @@
+databases:
+  - name: springboot-db
+    databaseName: mydb
+    user: admin
+    password: password
+
 services:
   - type: web
     name: springboot-api
-    env: java
     buildCommand: ./gradlew build
     startCommand: java -jar build/libs/your-app-name.jar
     envVars:
@@ -17,8 +22,3 @@ services:
         fromDatabase:
           name: springboot-db
           property: password
-
-databases:
-  - name: springboot-db
-    databaseName: mydb
-    user: admin
