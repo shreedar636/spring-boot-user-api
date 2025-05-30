@@ -6,7 +6,7 @@ services:
   - type: web
     name: springboot-api
     buildCommand: ./gradlew build
-    startCommand: java -jar build/libs/your-app-name.jar
+    startCommand: java -jar build/libs/app.jar
     envVars:
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
