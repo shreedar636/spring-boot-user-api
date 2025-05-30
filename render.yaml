@@ -1,36 +1,15 @@
-databases:
-  - name: mydb
-    databaseName: mydb
-    user: myuser
-    plan: free
-
 services:
   - type: web
     name: springboot-api
-    runtime: python  # We'll use Python but override everything
+    runtime: python
     buildCommand: |
-      curl -s "https://get.sdkman.io" | bash
-      source "$HOME/.sdkman/bin/sdkman-init.sh"
-      sdk install java 17.0.8-tem
+      apt-get update
+      apt-get install -y openjdk-17-jdk
       ./gradlew build
+      # Find and store Java location
+      JAVA_PATH=$(update-alternatives --list java | head -1)
+      echo "Found Java at: $JAVA_PATH"
+      echo "export JAVA_PATH='$JAVA_PATH'" >> /etc/profile.d/java.sh
     startCommand: |
-      source "$HOME/.sdkman/bin/sdkman-init.sh"
-      java -jar build/libs/app.jar
-    plan: free
-    envVars:
-      - key: DB_HOST
-        fromDatabase:
-          name: mydb
-          property: host
-      - key: DB_NAME
-        fromDatabase:
-          name: mydb
-          property: database
-      - key: DB_USERNAME
-        fromDatabase:
-          name: mydb
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: mydb
-          property: password
+      source /etc/profile.d/java.sh
+      "$JAVA_PATH" -jar build/libs/app.jar
