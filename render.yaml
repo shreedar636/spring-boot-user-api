@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: springboot-api
+    name: springboot-user-api
     runtime: java
     buildCommand: ./gradlew build
     startCommand: java -jar build/libs/app.jar
